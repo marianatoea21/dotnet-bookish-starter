@@ -1,5 +1,7 @@
 using dotnet_bookish_starter.Models;
 using Microsoft.AspNetCore.Mvc;
+using Dapper;
+using Microsoft.Data.SqlClient;
 
 namespace dotnet_bookish_starter.Controllers;
 
@@ -7,13 +9,20 @@ namespace dotnet_bookish_starter.Controllers;
 [Route("book")]
 public class BookController : ControllerBase
 {
+    private readonly string _connectionString;
+ 
+    public BookController(IConfiguration config)
+    {
+        _connectionString = config.GetConnectionString("DbConnectionString") ?? "";
+    }
+
     [HttpGet]
-    public IEnumerable<Book> Get()
+    public async Task<IEnumerable<Book>> Get()
     {
         // TODO implement the GET method
         throw new NotImplementedException();
     }
-    
+
     [HttpPost]
     public Book Post([FromBody] Book book)
     {
