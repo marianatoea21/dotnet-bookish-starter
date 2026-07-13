@@ -1,4 +1,5 @@
-﻿namespace dotnet_bookish_starter.Dtos;
+﻿using dotnet_bookish_starter.Models;
+namespace dotnet_bookish_starter.Dtos;
 
 public class BookCreateDTO
 {
@@ -27,4 +28,11 @@ public class BookAvailabilityDTO
     public int TotalCopies { get; set; }
     public int AvailableCopies { get; set; }
     public List<BorrowerDetailsDTO> BorrowedBy { get; set; } = new();
+}
+
+public class AuthorDetailsDTO
+{
+    public int AuthorID { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public List<Book> Books { get; set; } = new();
 }
